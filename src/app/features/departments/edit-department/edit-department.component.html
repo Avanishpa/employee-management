@@ -1,0 +1,149 @@
+<div class="edit-department-page">
+
+  <!-- Page Header -->
+
+  <div class="page-header">
+
+    <div>
+      <h1>Edit Department</h1>
+      <p>Update department information</p>
+    </div>
+
+  </div>
+
+
+  <!-- Form Card -->
+
+  <div class="form-card">
+
+    <form
+      [formGroup]="departmentForm"
+      (ngSubmit)="updateDepartment()"
+    >
+
+      <div class="form-grid">
+
+        <!-- Department Name -->
+
+        <div class="form-group">
+
+          <label>Department Name *</label>
+
+          <input
+            type="text"
+            placeholder="Enter department name"
+            formControlName="name"
+          >
+
+          <small
+            class="error"
+            *ngIf="
+              departmentForm.get('name')?.invalid &&
+              departmentForm.get('name')?.touched
+            "
+          >
+            Department name is required
+          </small>
+
+        </div>
+
+
+        <!-- Department Manager -->
+
+        <div class="form-group">
+
+          <label>Department Manager *</label>
+
+          <input
+            type="text"
+            placeholder="Enter manager name"
+            formControlName="manager"
+          >
+
+          <small
+            class="error"
+            *ngIf="
+              departmentForm.get('manager')?.invalid &&
+              departmentForm.get('manager')?.touched
+            "
+          >
+            Manager name is required
+          </small>
+
+        </div>
+
+
+        <!-- Description -->
+
+        <div class="form-group full-width">
+
+          <label>Description *</label>
+
+          <textarea
+            rows="4"
+            placeholder="Enter department description"
+            formControlName="description"
+          ></textarea>
+
+          <small
+            class="error"
+            *ngIf="
+              departmentForm.get('description')?.invalid &&
+              departmentForm.get('description')?.touched
+            "
+          >
+            Description is required
+          </small>
+
+        </div>
+
+
+        <!-- Status -->
+
+        <div class="form-group">
+
+          <label>Status *</label>
+
+          <select formControlName="status">
+
+            <option value="Active">
+              Active
+            </option>
+
+            <option value="Inactive">
+              Inactive
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <!-- Buttons -->
+
+      <div class="form-actions">
+
+        <button
+          type="button"
+          class="cancel-btn"
+          routerLink="/departments"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="save-btn"
+        >
+          Update Department
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

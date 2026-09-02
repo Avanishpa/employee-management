@@ -1,0 +1,525 @@
+/* ========================================
+   REPORTS CONTAINER
+======================================== */
+
+.reports-container {
+  width: 100%;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.reports-header {
+  margin-bottom: 25px;
+
+  h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #1e293b;
+  }
+
+  p {
+    margin-top: 6px;
+    color: #64748b;
+  }
+}
+
+
+/* ========================================
+   FILTER CARD
+======================================== */
+
+.filter-card {
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 14px;
+
+  margin-bottom: 25px;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+.filter-card h3 {
+  margin:
+    0 0 20px;
+
+  color: #1e293b;
+}
+
+
+/* ========================================
+   FILTER GRID
+======================================== */
+
+.filters-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 18px;
+}
+
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+
+.form-group label {
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #475569;
+}
+
+
+.form-group select,
+.form-group input {
+  width: 100%;
+
+  padding: 11px 12px;
+
+  border:
+    1px solid #cbd5e1;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  outline: none;
+
+  background: white;
+}
+
+
+.form-group select:focus,
+.form-group input:focus {
+  border-color: #2563eb;
+}
+
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.filter-buttons {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 20px;
+}
+
+
+.apply-btn,
+.clear-btn {
+  padding:
+    10px 18px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+}
+
+
+.apply-btn {
+  background: #2563eb;
+
+  color: white;
+}
+
+
+.apply-btn:hover {
+  background: #1d4ed8;
+}
+
+
+.clear-btn {
+  background: #e2e8f0;
+
+  color: #334155;
+}
+
+
+/* ========================================
+   REPORT STATISTICS
+======================================== */
+
+.report-stats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 18px;
+
+  margin-bottom: 25px;
+}
+
+
+.report-stat-card {
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+.report-stat-card span {
+  font-size: 14px;
+
+  color: #64748b;
+}
+
+
+.report-stat-card h2 {
+  margin:
+    8px 0 0;
+
+  font-size: 28px;
+}
+
+
+.report-stat-card.present {
+  border-left:
+    4px solid #22c55e;
+}
+
+
+.report-stat-card.absent {
+  border-left:
+    4px solid #ef4444;
+}
+
+
+.report-stat-card.late {
+  border-left:
+    4px solid #f59e0b;
+}
+
+
+.report-stat-card.wfh {
+  border-left:
+    4px solid #6366f1;
+}
+
+
+/* ========================================
+   REPORT TABLE
+======================================== */
+
+.report-table-card {
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+.table-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+
+.table-header h3 {
+  margin: 0;
+}
+
+
+.table-header span {
+  font-size: 13px;
+
+  color: #64748b;
+}
+
+
+/* ========================================
+   TABLE
+======================================== */
+
+.table-responsive {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border:
+    1px solid #e2e8f0;
+
+  border-radius: 10px;
+}
+
+
+table {
+  width: 100%;
+
+  min-width: 650px;
+
+  border-collapse: collapse;
+}
+
+
+th {
+  background: #f8fafc;
+
+  padding: 14px;
+
+  text-align: left;
+
+  font-size: 13px;
+
+  color: #475569;
+}
+
+
+td {
+  padding: 14px;
+
+  border-top:
+    1px solid #f1f5f9;
+
+  font-size: 14px;
+
+  color: #334155;
+}
+
+
+tbody tr:hover {
+  background: #f8fafc;
+}
+
+
+/* ========================================
+   STATUS BADGES
+======================================== */
+
+.status-badge {
+  display: inline-block;
+
+  padding:
+    6px 12px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.status-badge.present {
+  background: #dcfce7;
+
+  color: #15803d;
+}
+
+
+.status-badge.absent {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+
+.status-badge.late {
+  background: #fef3c7;
+
+  color: #b45309;
+}
+
+
+.status-badge.wfh {
+  background: #e0e7ff;
+
+  color: #4338ca;
+}
+
+
+/* ========================================
+   NO DATA
+======================================== */
+
+.no-data {
+  padding: 40px;
+
+  text-align: center;
+
+  color: #64748b;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1000px) {
+
+  .filters-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .report-stats {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .reports-header h1 {
+    font-size: 23px;
+  }
+
+
+  .filter-card,
+  .report-table-card {
+    padding: 16px;
+  }
+
+
+  .filters-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .report-stats {
+    grid-template-columns: 1fr;
+  }
+
+
+  .filter-buttons {
+    flex-direction: column;
+  }
+
+
+  .apply-btn,
+  .clear-btn {
+    width: 100%;
+  }
+
+
+  .table-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 8px;
+  }
+
+}
+/* ========================================
+   EXPORT BUTTONS
+======================================== */
+
+.export-buttons {
+  display: flex;
+
+  gap: 10px;
+
+  align-items: center;
+}
+
+
+.excel-btn,
+.pdf-btn {
+  border: none;
+
+  padding: 10px 15px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  transition: 0.2s;
+}
+
+
+.excel-btn {
+  background: #16a34a;
+
+  color: white;
+}
+
+
+.excel-btn:hover {
+  background: #15803d;
+}
+
+
+.pdf-btn {
+  background: #dc2626;
+
+  color: white;
+}
+
+
+.pdf-btn:hover {
+  background: #b91c1c;
+}
+
+
+.excel-btn:disabled,
+.pdf-btn:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+
+@media (max-width: 700px) {
+
+  .table-header {
+    align-items: stretch;
+  }
+
+
+  .export-buttons {
+    width: 100%;
+
+    flex-direction: column;
+  }
+
+
+  .excel-btn,
+  .pdf-btn {
+    width: 100%;
+  }
+
+}

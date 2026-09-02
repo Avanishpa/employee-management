@@ -1,0 +1,1027 @@
+
+/* ========================================
+   DASHBOARD MAIN
+======================================== */
+
+.dashboard {
+  width: 100%;
+  padding: 5px;
+}
+
+
+/* ========================================
+   DASHBOARD HEADER
+======================================== */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 25px;
+
+  h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e293b;
+  }
+
+  p {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: #64748b;
+  }
+}
+
+
+/* ========================================
+   STATISTICS CARDS
+======================================== */
+
+.stats-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(200px, 1fr));
+
+  gap: 18px;
+
+  margin-bottom: 25px;
+}
+
+
+.stat-card {
+  background: #ffffff;
+
+  padding: 20px;
+
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.06);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  cursor: default;
+}
+
+
+.stat-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+
+.stat-icon {
+  width: 55px;
+  height: 55px;
+
+  min-width: 55px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 12px;
+
+  background: #f1f5f9;
+
+  font-size: 26px;
+}
+
+
+.stat-card span {
+  display: block;
+
+  font-size: 14px;
+
+  color: #64748b;
+
+  margin-bottom: 5px;
+}
+
+
+.stat-card h2 {
+  margin: 0;
+
+  font-size: 26px;
+
+  font-weight: 700;
+
+  color: #1e293b;
+}
+
+
+/* ========================================
+   DASHBOARD CHARTS
+======================================== */
+
+.charts-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 25px;
+
+  margin-bottom: 25px;
+}
+
+
+.chart-card {
+  background: #ffffff;
+
+  padding: 25px;
+
+  border-radius: 14px;
+
+  min-width: 0;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+.chart-card h3 {
+  margin: 0 0 20px;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  color: #1e293b;
+}
+
+
+.chart-card apx-chart {
+  display: block;
+
+  width: 100%;
+}
+
+
+/* ========================================
+   DASHBOARD SECTION
+======================================== */
+
+.dashboard-section {
+  background: #ffffff;
+
+  padding: 25px;
+
+  border-radius: 14px;
+
+  margin-bottom: 25px;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+/* ========================================
+   SECTION HEADER
+======================================== */
+
+.section-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+
+.section-header h3 {
+  margin: 0;
+
+  font-size: 19px;
+
+  font-weight: 600;
+
+  color: #1e293b;
+}
+
+
+/* ========================================
+   QUICK ACTIONS
+======================================== */
+
+.quick-actions {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 15px;
+}
+
+
+.action-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 18px;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 12px;
+
+  text-decoration: none;
+
+  color: #1e293b;
+
+  background: #ffffff;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.action-card:hover {
+  background: #f8fafc;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 6px 15px rgba(0, 0, 0, 0.06);
+}
+
+
+.action-icon {
+  width: 48px;
+
+  height: 48px;
+
+  min-width: 48px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 10px;
+
+  background: #f1f5f9;
+
+  font-size: 24px;
+}
+
+
+.action-card strong {
+  display: block;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  color: #1e293b;
+}
+
+
+.action-card small {
+  display: block;
+
+  margin-top: 5px;
+
+  font-size: 13px;
+
+  color: #64748b;
+}
+
+
+/* ========================================
+   ATTENDANCE OVERVIEW
+======================================== */
+
+.attendance-overview {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(140px, 1fr));
+
+  gap: 20px;
+}
+
+
+.attendance-item {
+  text-align: center;
+
+  padding: 20px;
+
+  border-radius: 12px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+
+  transition:
+    transform 0.2s ease;
+}
+
+
+.attendance-item:hover {
+  transform: translateY(-3px);
+}
+
+
+/* ========================================
+   ATTENDANCE NUMBER
+======================================== */
+
+.attendance-number {
+  width: 65px;
+
+  height: 65px;
+
+  margin:
+    0 auto 12px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 22px;
+
+  font-weight: 700;
+}
+
+
+/* PRESENT */
+
+.attendance-number.present {
+  background: #dcfce7;
+
+  color: #15803d;
+}
+
+
+/* ABSENT */
+
+.attendance-number.absent {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+
+/* LATE */
+
+.attendance-number.late {
+  background: #fef3c7;
+
+  color: #b45309;
+}
+
+
+/* WORK FROM HOME */
+
+.attendance-number.wfh {
+  background: #e0e7ff;
+
+  color: #4338ca;
+}
+
+
+.attendance-item span {
+  display: block;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  color: #475569;
+}
+
+
+/* ========================================
+   DASHBOARD INFO / FOOTER
+======================================== */
+
+.dashboard-info {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 15px 5px;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  border-top:
+    1px solid #e2e8f0;
+}
+
+
+/* ========================================
+   EMPTY DATA MESSAGE
+======================================== */
+
+.empty-message {
+  text-align: center;
+
+  padding: 30px;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+
+/* ========================================
+   TABLE (FOR FUTURE RECENT EMPLOYEES)
+======================================== */
+
+.dashboard-table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+
+.dashboard-table th {
+  background: #f8fafc;
+
+  padding: 14px;
+
+  text-align: left;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #64748b;
+
+  border-bottom:
+    1px solid #e2e8f0;
+}
+
+
+.dashboard-table td {
+  padding: 14px;
+
+  font-size: 14px;
+
+  color: #334155;
+
+  border-bottom:
+    1px solid #f1f5f9;
+}
+
+
+.dashboard-table tr:hover {
+  background: #f8fafc;
+}
+
+
+/* ========================================
+   RESPONSIVE - TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .attendance-overview {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+
+/* ========================================
+   RESPONSIVE - MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .dashboard {
+    padding: 0;
+  }
+
+
+  .dashboard-header {
+    margin-bottom: 20px;
+  }
+
+
+  .dashboard-header h1 {
+    font-size: 24px;
+  }
+
+
+  .stats-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 12px;
+  }
+
+
+  .stat-card {
+    padding: 15px;
+
+    gap: 10px;
+  }
+
+
+  .stat-icon {
+    width: 45px;
+
+    height: 45px;
+
+    min-width: 45px;
+
+    font-size: 21px;
+  }
+
+
+  .stat-card h2 {
+    font-size: 22px;
+  }
+
+
+  .stat-card span {
+    font-size: 12px;
+  }
+
+
+  .chart-card {
+    padding: 18px;
+  }
+
+
+  .dashboard-section {
+    padding: 18px;
+  }
+
+
+  .quick-actions {
+    grid-template-columns: 1fr;
+  }
+
+
+  .attendance-overview {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 12px;
+  }
+
+
+  .dashboard-info {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 8px;
+  }
+
+}
+
+
+/* ========================================
+   RESPONSIVE - SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .attendance-overview {
+    grid-template-columns: 1fr;
+  }
+
+
+  .dashboard-header h1 {
+    font-size: 22px;
+  }
+
+
+  .dashboard-header p {
+    font-size: 13px;
+  }
+
+
+  .stat-card {
+    padding: 16px;
+  }
+
+
+  .chart-card {
+    padding: 15px;
+  }
+
+
+  .dashboard-section {
+    padding: 15px;
+  }
+
+}
+/* =========================
+   DASHBOARD CHARTS
+========================= */
+
+.charts-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 25px;
+
+  margin-bottom: 25px;
+
+}
+
+
+.chart-card {
+
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 3px 12px
+    rgba(0, 0, 0, 0.05);
+
+}
+
+
+.chart-card h3 {
+
+  margin-top: 0;
+
+  margin-bottom: 20px;
+
+}
+
+
+@media (max-width: 900px) {
+
+  .charts-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+/* =========================
+   DASHBOARD CHARTS
+========================= */
+
+.charts-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 25px;
+
+  margin-bottom: 25px;
+
+}
+
+
+.chart-card {
+
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 3px 12px
+    rgba(0, 0, 0, 0.05);
+
+}
+
+
+.chart-card h3 {
+
+  margin-top: 0;
+
+  margin-bottom: 20px;
+
+}
+
+
+@media (max-width: 900px) {
+
+  .charts-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+/* ========================================
+   RECENT EMPLOYEES
+======================================== */
+
+.recent-employees-section {
+  margin-bottom: 25px;
+}
+
+
+.section-header p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+
+  color: #64748b;
+}
+
+
+.view-all-btn {
+  text-decoration: none;
+
+  padding: 9px 16px;
+
+  border-radius: 8px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  transition:
+    background 0.2s ease;
+}
+
+
+.view-all-btn:hover {
+  background: #1d4ed8;
+}
+
+
+/* ========================================
+   RESPONSIVE TABLE
+======================================== */
+
+.table-responsive {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border-radius: 10px;
+
+  border: 1px solid #e2e8f0;
+}
+
+
+.dashboard-table {
+  width: 100%;
+
+  min-width: 850px;
+
+  border-collapse: collapse;
+
+  background: white;
+}
+
+
+.dashboard-table th {
+  padding: 15px;
+
+  background: #f8fafc;
+
+  text-align: left;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #475569;
+
+  white-space: nowrap;
+
+  border-bottom:
+    1px solid #e2e8f0;
+}
+
+
+.dashboard-table td {
+  padding: 15px;
+
+  font-size: 14px;
+
+  color: #334155;
+
+  border-bottom:
+    1px solid #f1f5f9;
+}
+
+
+.dashboard-table tbody tr {
+  transition:
+    background 0.2s ease;
+}
+
+
+.dashboard-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+
+.dashboard-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* ========================================
+   EMPLOYEE INFO
+======================================== */
+
+.employee-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 180px;
+
+}
+
+
+.employee-photo,
+.employee-avatar {
+  width: 42px;
+
+  height: 42px;
+
+  min-width: 42px;
+
+  border-radius: 50%;
+}
+
+
+.employee-photo {
+  object-fit: cover;
+
+  border: 2px solid #e2e8f0;
+}
+
+
+.employee-avatar {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #e0e7ff;
+
+  color: #4338ca;
+
+  font-weight: 600;
+
+  font-size: 17px;
+}
+
+
+.employee-info span {
+  font-weight: 500;
+
+  color: #1e293b;
+}
+
+
+/* ========================================
+   STATUS BADGES
+======================================== */
+
+.status-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.status-badge.active {
+  background: #dcfce7;
+
+  color: #15803d;
+}
+
+
+.status-badge.inactive {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+
+/* ========================================
+   EMPTY MESSAGE
+======================================== */
+
+.empty-message {
+  padding: 35px;
+
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .section-header {
+    align-items: flex-start;
+
+    gap: 15px;
+
+    flex-direction: column;
+  }
+
+
+  .view-all-btn {
+    width: 100%;
+
+    text-align: center;
+  }
+
+}
+/* ========================================
+   WEEKLY ATTENDANCE CHART
+======================================== */
+
+.weekly-chart {
+  width: 100%;
+
+  min-height: 350px;
+}
+
+
+.weekly-chart apx-chart {
+  display: block;
+
+  width: 100%;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .weekly-chart {
+    min-height: 300px;
+  }
+
+}

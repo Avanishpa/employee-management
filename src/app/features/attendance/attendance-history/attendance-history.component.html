@@ -1,0 +1,348 @@
+<div class="attendance-history-page">
+
+  <!-- PAGE HEADER -->
+
+  <div class="page-header">
+
+    <div>
+      <h1>Attendance History</h1>
+      <p>View and manage employee attendance records</p>
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       STATISTICS CARDS
+  ========================== -->
+
+  <div class="stats-grid">
+
+    <div class="stat-card total">
+      <span class="stat-icon">📋</span>
+      <div>
+        <span>Total Records</span>
+        <strong>{{ totalRecords }}</strong>
+      </div>
+    </div>
+
+
+    <div class="stat-card present">
+      <span class="stat-icon">✅</span>
+      <div>
+        <span>Present</span>
+        <strong>{{ presentCount }}</strong>
+      </div>
+    </div>
+
+
+    <div class="stat-card absent">
+      <span class="stat-icon">❌</span>
+      <div>
+        <span>Absent</span>
+        <strong>{{ absentCount }}</strong>
+      </div>
+    </div>
+
+
+    <div class="stat-card late">
+      <span class="stat-icon">⏰</span>
+      <div>
+        <span>Late</span>
+        <strong>{{ lateCount }}</strong>
+      </div>
+    </div>
+
+
+    <div class="stat-card wfh">
+      <span class="stat-icon">🏠</span>
+      <div>
+        <span>Work From Home</span>
+        <strong>{{ wfhCount }}</strong>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       FILTER CARD
+  ========================== -->
+
+  <div class="filter-card">
+
+    <!-- Search -->
+
+    <input
+      type="text"
+      placeholder="Search employee or department..."
+      [(ngModel)]="searchText"
+      (input)="applyFilters()"
+      class="search-input"
+    >
+
+
+    <!-- Date -->
+
+    <input
+      type="date"
+      [(ngModel)]="selectedDate"
+      (change)="applyFilters()"
+      class="date-input"
+    >
+
+
+    <!-- Status -->
+
+    <select
+      [(ngModel)]="selectedStatus"
+      (change)="applyFilters()"
+      class="status-filter"
+    >
+
+      <option value="">
+        All Status
+      </option>
+
+      <option value="Present">
+        Present
+      </option>
+
+      <option value="Absent">
+        Absent
+      </option>
+
+      <option value="Late">
+        Late
+      </option>
+
+      <option value="Work From Home">
+        Work From Home
+      </option>
+
+    </select>
+
+
+    <!-- Clear -->
+
+    <button
+      class="clear-btn"
+      (click)="clearFilters()"
+    >
+      Clear Filters
+    </button>
+
+  </div>
+
+
+  <!-- =========================
+       TABLE CARD
+  ========================== -->
+
+  <div class="table-card">
+
+    <div class="table-header">
+
+      <h3>Attendance Records</h3>
+
+
+      <!-- Page Size -->
+
+      <select
+        [(ngModel)]="itemsPerPage"
+        (change)="changePageSize()"
+        class="page-size"
+      >
+
+        <option [value]="5">5 per page</option>
+        <option [value]="10">10 per page</option>
+        <option [value]="20">20 per page</option>
+
+      </select>
+
+    </div>
+
+
+    <div class="table-responsive">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th
+              class="sortable"
+              (click)="sort('id')"
+            >
+              ID
+              <span *ngIf="sortColumn === 'id'">
+                {{ sortDirection === 'asc' ? '▲' : '▼' }}
+              </span>
+            </th>
+
+
+            <th
+              class="sortable"
+              (click)="sort('employeeName')"
+            >
+              Employee
+              <span *ngIf="sortColumn === 'employeeName'">
+                {{ sortDirection === 'asc' ? '▲' : '▼' }}
+              </span>
+            </th>
+
+
+            <th
+              class="sortable"
+              (click)="sort('department')"
+            >
+              Department
+              <span *ngIf="sortColumn === 'department'">
+                {{ sortDirection === 'asc' ? '▲' : '▼' }}
+              </span>
+            </th>
+
+
+            <th
+              class="sortable"
+              (click)="sort('date')"
+            >
+              Date
+              <span *ngIf="sortColumn === 'date'">
+                {{ sortDirection === 'asc' ? '▲' : '▼' }}
+              </span>
+            </th>
+
+
+            <th
+              class="sortable"
+              (click)="sort('status')"
+            >
+              Status
+              <span *ngIf="sortColumn === 'status'">
+                {{ sortDirection === 'asc' ? '▲' : '▼' }}
+              </span>
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let record of paginatedRecords
+            "
+          >
+
+            <td>{{ record.id }}</td>
+
+            <td>
+              <strong>
+                {{ record.employeeName }}
+              </strong>
+            </td>
+
+            <td>{{ record.department }}</td>
+
+            <td>{{ record.date }}</td>
+
+
+            <!-- STATUS -->
+
+            <td>
+
+              <span
+                class="status-badge"
+                [ngClass]="{
+                  'present-badge':
+                    record.status === 'Present',
+
+                  'absent-badge':
+                    record.status === 'Absent',
+
+                  'late-badge':
+                    record.status === 'Late',
+
+                  'wfh-badge':
+                    record.status === 'Work From Home'
+                }"
+              >
+
+                {{ record.status }}
+
+              </span>
+
+            </td>
+
+          </tr>
+
+
+          <!-- NO DATA -->
+
+          <tr
+            *ngIf="
+              paginatedRecords.length === 0
+            "
+          >
+
+            <td colspan="5" class="no-data">
+
+              No attendance records found.
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- =========================
+         PAGINATION
+    ========================== -->
+
+    <div
+      class="pagination"
+      *ngIf="totalPages > 1"
+    >
+
+      <button
+        (click)="previousPage()"
+        [disabled]="currentPage === 1"
+      >
+        Previous
+      </button>
+
+
+      <button
+        *ngFor="let page of pages"
+        (click)="changePage(page)"
+        [class.active-page]="
+          page === currentPage
+        "
+      >
+        {{ page }}
+      </button>
+
+
+      <button
+        (click)="nextPage()"
+        [disabled]="
+          currentPage === totalPages
+        "
+      >
+        Next
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

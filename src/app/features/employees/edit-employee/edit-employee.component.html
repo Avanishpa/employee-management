@@ -1,0 +1,167 @@
+<div class="edit-employee-page">
+
+  <div class="page-header">
+
+    <div>
+      <h1>Edit Employee</h1>
+      <p>Update employee information</p>
+    </div>
+
+  </div>
+
+
+  <div class="form-card">
+
+    <form
+      [formGroup]="employeeForm"
+      (ngSubmit)="updateEmployee()"
+    >
+
+      <div class="form-grid">
+
+        <!-- Employee ID -->
+
+        <div class="form-group">
+
+          <label>Employee ID *</label>
+
+          <input
+            type="text"
+            formControlName="employeeId"
+          >
+
+        </div>
+
+
+        <!-- Full Name -->
+
+        <div class="form-group">
+
+          <label>Full Name *</label>
+
+          <input
+            type="text"
+            formControlName="name"
+          >
+
+        </div>
+
+
+        <!-- Email -->
+
+        <div class="form-group">
+
+          <label>Email *</label>
+
+          <input
+            type="email"
+            formControlName="email"
+          >
+
+        </div>
+
+
+        <!-- Phone -->
+
+        <div class="form-group">
+
+          <label>Phone *</label>
+
+          <input
+            type="text"
+            formControlName="phone"
+          >
+
+        </div>
+
+
+        <!-- Department -->
+
+        <div class="form-group">
+
+          <label>Department *</label>
+
+          <input
+            type="text"
+            formControlName="department"
+          >
+
+        </div>
+
+
+        <!-- Designation -->
+
+        <div class="form-group">
+
+          <label>Designation *</label>
+
+          <input
+            type="text"
+            formControlName="designation"
+          >
+
+        </div>
+
+
+        <!-- Joining Date -->
+
+        <div class="form-group">
+
+          <label>Joining Date *</label>
+
+          <input
+            type="date"
+            formControlName="joiningDate"
+          >
+
+        </div>
+
+
+        <!-- Status -->
+
+        <div class="form-group">
+
+          <label>Status *</label>
+
+          <select formControlName="status">
+
+            <option value="Active">
+              Active
+            </option>
+
+            <option value="Inactive">
+              Inactive
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-actions">
+
+        <button
+          type="button"
+          class="cancel-btn"
+          routerLink="/employees"
+        >
+          Cancel
+        </button>
+
+
+        <button
+          type="submit"
+          class="save-btn"
+        >
+          Update Employee
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

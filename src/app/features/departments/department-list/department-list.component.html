@@ -1,0 +1,477 @@
+<div class="department-page">
+
+  <!-- =========================
+       PAGE HEADER
+  ========================== -->
+
+  <div class="page-header">
+
+    <div>
+      <h1>Departments</h1>
+      <p>Manage your organization departments</p>
+    </div>
+
+    <button
+      class="add-btn"
+      routerLink="/departments/add"
+    >
+      + Add Department
+    </button>
+
+  </div>
+
+
+  <!-- =========================
+       TABLE CARD
+  ========================== -->
+
+  <div class="table-card">
+
+    <!-- TABLE HEADER -->
+
+    <div class="table-header">
+
+      <!-- Search -->
+
+      <input
+        type="text"
+        placeholder="Search department..."
+        class="search-input"
+        [(ngModel)]="searchText"
+        (input)="searchDepartments()"
+      >
+
+
+      <div class="table-actions">
+
+        <!-- Items Per Page -->
+
+        <select
+          [(ngModel)]="itemsPerPage"
+          (change)="changePageSize()"
+          class="page-size"
+        >
+
+          <option [value]="5">
+            5 per page
+          </option>
+
+          <option [value]="10">
+            10 per page
+          </option>
+
+          <option [value]="20">
+            20 per page
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <!-- TABLE -->
+
+    <div class="table-responsive">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th
+              (click)="sort('id')"
+              class="sortable"
+            >
+              ID
+
+              <span *ngIf="sortColumn === 'id'">
+                {{ sortDirection === 'asc' ? '▲' : '▼' }}
+              </span>
+            </th>
+
+
+            <th
+              (click)="sort('name')"
+              class="sortable"
+            >
+              Department Name
+
+              <span *ngIf="sortColumn === 'name'">
+                {{ sortDirection === 'asc' ? '▲' : '▼' }}
+              </span>
+            </th>
+
+
+            <th
+              (click)="sort('manager')"
+              class="sortable"
+            >
+              Manager
+
+              <span *ngIf="sortColumn === 'manager'">
+                {{ sortDirection === 'asc' ? '▲' : '▼' }}
+              </span>
+            </th>
+
+
+            <th>
+              Employees
+            </th>
+
+
+            <th
+              (click)="sort('status')"
+              class="sortable"
+            >
+              Status
+
+              <span *ngIf="sortColumn === 'status'">
+                {{ sortDirection === 'asc' ? '▲' : '▼' }}
+              </span>
+            </th>
+
+
+            <th>
+              Action
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let department of paginatedDepartments
+            "
+          >
+
+            <td>
+              {{ department.id }}
+            </td>
+
+
+            <td>
+              <strong>
+                {{ department.name }}
+              </strong>
+            </td>
+
+
+            <td>
+              {{ department.manager }}
+            </td>
+
+
+            <!-- Employee Count -->
+
+            <td>
+
+              <span class="employee-count">
+
+                {{ getEmployeeCount(department.name) }}
+
+              </span>
+
+            </td>
+
+
+            <!-- Status -->
+
+            <td>
+
+              <span
+                class="status"
+                [class.active]="
+                  department.status === 'Active'
+                "
+                [class.inactive]="
+                  department.status === 'Inactive'
+                "
+              >
+
+                {{ department.status }}
+
+              </span>
+
+            </td>
+
+
+            <!-- Actions -->
+
+            <td class="actions">
+
+              <button
+                class="edit-btn"
+                [routerLink]="[
+                  '/departments/edit',
+                  department.id
+                ]"
+              >
+                Edit
+              </button>
+
+ <button
+    class="view-btn"
+    (click)="viewDepartment(department)"
+  >
+    View
+  </button>
+              <button
+                class="delete-btn"
+                (click)="deleteDepartment(
+                  department.id
+                )"
+              >
+                Delete
+              </button>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- =========================
+         PAGINATION
+    ========================== -->
+
+    <div
+      class="pagination"
+      *ngIf="totalPages > 1"
+    >
+
+      <!-- Previous -->
+
+      <button
+        (click)="previousPage()"
+        [disabled]="currentPage === 1"
+      >
+        Previous
+      </button>
+
+
+      <!-- Page Numbers -->
+
+      <button
+        *ngFor="let page of pages"
+        (click)="changePage(page)"
+        [class.active-page]="
+          page === currentPage
+        "
+      >
+        {{ page }}
+      </button>
+
+
+      <!-- Next -->
+
+      <button
+        (click)="nextPage()"
+        [disabled]="
+          currentPage === totalPages
+        "
+      >
+        Next
+      </button>
+
+    </div>
+
+
+  </div>
+
+</div>
+<!-- =========================
+     DEPARTMENT VIEW MODAL
+========================= -->
+
+<div
+  class="modal-overlay"
+  *ngIf="showDepartmentModal"
+  (click)="closeDepartmentModal()"
+>
+
+  <div
+    class="department-modal"
+    (click)="$event.stopPropagation()"
+  >
+
+    <!-- Modal Header -->
+
+    <div class="modal-header">
+
+      <div>
+
+        <h2>Department Details</h2>
+
+        <p>
+          Complete department information
+        </p>
+
+      </div>
+
+      <button
+        class="close-btn"
+        (click)="closeDepartmentModal()"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <!-- Modal Content -->
+
+    <div
+      class="modal-content"
+      *ngIf="selectedDepartment"
+    >
+
+      <!-- Department Icon -->
+
+      <div class="department-icon">
+
+        🏢
+
+      </div>
+
+
+      <!-- Department Name -->
+
+      <h2 class="department-name">
+
+        {{ selectedDepartment.name }}
+
+      </h2>
+
+
+      <!-- Details Grid -->
+
+      <div class="details-grid">
+
+        <!-- Department ID -->
+
+        <div class="detail-item">
+
+          <span class="detail-label">
+            Department ID
+          </span>
+
+          <strong>
+            #{{ selectedDepartment.id }}
+          </strong>
+
+        </div>
+
+
+        <!-- Manager -->
+
+        <div class="detail-item">
+
+          <span class="detail-label">
+            Department Manager
+          </span>
+
+          <strong>
+            {{ selectedDepartment.manager }}
+          </strong>
+
+        </div>
+
+
+        <!-- Total Employees -->
+
+        <div class="detail-item">
+
+          <span class="detail-label">
+            Total Employees
+          </span>
+
+          <strong class="employee-number">
+
+            👥
+            {{ getEmployeeCount(selectedDepartment.name) }}
+
+          </strong>
+
+        </div>
+
+
+        <!-- Status -->
+
+        <div class="detail-item">
+
+          <span class="detail-label">
+            Status
+          </span>
+
+          <span
+            class="status"
+            [class.active]="selectedDepartment.status === 'Active'"
+            [class.inactive]="selectedDepartment.status === 'Inactive'"
+          >
+
+            {{ selectedDepartment.status }}
+
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- Description -->
+
+      <div class="description-section">
+
+        <span class="detail-label">
+          Description
+        </span>
+
+        <p>
+          {{ selectedDepartment.description }}
+        </p>
+
+      </div>
+
+
+      <!-- Modal Footer -->
+
+      <div class="modal-footer">
+
+        <button
+          class="cancel-btn"
+          (click)="closeDepartmentModal()"
+        >
+          Close
+        </button>
+
+
+        <button
+          class="edit-modal-btn"
+          [routerLink]="[
+            '/departments/edit',
+            selectedDepartment.id
+          ]"
+          (click)="closeDepartmentModal()"
+        >
+          ✏️ Edit Department
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

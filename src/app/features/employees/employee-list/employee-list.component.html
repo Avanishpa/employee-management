@@ -1,0 +1,395 @@
+<div class="employee-page">
+
+  <div class="page-header">
+
+    <div>
+      <h1>Employees</h1>
+      <p>Manage all employees from one place</p>
+    </div>
+
+    <button routerLink="/employees/add" class="add-btn">
+      + Add Employee
+    </button>
+
+  </div>
+
+
+  <div class="table-card">
+
+  
+<div class="table-header">
+
+  <input
+    type="text"
+    placeholder="Search employee..."
+    class="search-input"
+    [(ngModel)]="searchText"
+    (input)="searchEmployees()"
+  >
+  <div class="export-buttons">
+
+  <button
+    class="excel-btn"
+    (click)="exportToExcel()"
+  >
+    Export Excel
+  </button>
+
+  <button
+    class="pdf-btn"
+    (click)="exportToPDF()"
+  >
+    Export PDF
+  </button>
+
+</div>
+
+  <select
+    [(ngModel)]="itemsPerPage"
+    (change)="currentPage = 1"
+    class="page-size"
+  >
+    <option [value]="5">5 per page</option>
+    <option [value]="10">10 per page</option>
+    <option [value]="20">20 per page</option>
+  </select>
+
+</div>
+
+    <div class="table-responsive">
+
+      <table>
+
+        <thead>
+
+  <tr>
+
+    <th (click)="sort('employeeId')" class="sortable">
+      Employee ID
+
+      <span *ngIf="sortColumn === 'employeeId'">
+        {{ sortDirection === 'asc' ? '▲' : '▼' }}
+      </span>
+    </th>
+
+
+    <th (click)="sort('name')" class="sortable">
+      Name
+
+      <span *ngIf="sortColumn === 'name'">
+        {{ sortDirection === 'asc' ? '▲' : '▼' }}
+      </span>
+    </th>
+
+
+    <th (click)="sort('department')" class="sortable">
+      Department
+
+      <span *ngIf="sortColumn === 'department'">
+        {{ sortDirection === 'asc' ? '▲' : '▼' }}
+      </span>
+    </th>
+
+
+    <th (click)="sort('designation')" class="sortable">
+      Designation
+
+      <span *ngIf="sortColumn === 'designation'">
+        {{ sortDirection === 'asc' ? '▲' : '▼' }}
+      </span>
+    </th>
+
+
+    <th (click)="sort('email')" class="sortable">
+      Email
+
+      <span *ngIf="sortColumn === 'email'">
+        {{ sortDirection === 'asc' ? '▲' : '▼' }}
+      </span>
+    </th>
+
+
+    <th>Phone</th>
+
+
+    <th (click)="sort('status')" class="sortable">
+      Status
+
+      <span *ngIf="sortColumn === 'status'">
+        {{ sortDirection === 'asc' ? '▲' : '▼' }}
+      </span>
+    </th>
+
+
+    <th>Action</th>
+
+  </tr>
+
+</thead>
+
+
+        <tbody>
+
+         <tr *ngFor="let employee of paginatedEmployees">
+
+            <td>{{ employee.employeeId }}</td>
+
+            <td>
+              <strong>{{ employee.name }}</strong>
+            </td>
+
+            <td>{{ employee.department }}</td>
+
+            <td>{{ employee.designation }}</td>
+
+            <td>{{ employee.email }}</td>
+
+            <td>{{ employee.phone }}</td>
+
+            <td>
+              <span
+                class="status"
+                [class.active]="employee.status === 'Active'"
+                [class.inactive]="employee.status === 'Inactive'"
+              >
+                {{ employee.status }}
+              </span>
+            </td>
+
+            <td class="actions">
+
+              <button
+  class="edit-btn"
+  [routerLink]="['/employees/edit', employee.id]"
+>
+  Edit
+</button>
+<!-- <button
+  class="view-btn"
+  /* (click)="viewEmployee(employee)" */
+  (click)="viewEmployee(employee.id)" >
+  View
+</button> -->
+<button class="view-btn" (click)="viewEmployee(employee.id)">View </button>
+
+              <button
+  class="delete-btn"
+  (click)="deleteEmployee(employee.id)"
+>
+  Delete
+</button>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+<div class="pagination">
+
+  <!-- Previous -->
+
+  <button
+    (click)="previousPage()"
+    [disabled]="currentPage === 1"
+  >
+    Previous
+  </button>
+
+
+  <!-- Page Numbers -->
+
+  <button
+    *ngFor="let page of pages"
+    (click)="changePage(page)"
+    [class.active-page]="page === currentPage"
+  >
+    {{ page }}
+  </button>
+
+
+  <!-- Next -->
+
+  <button
+    (click)="nextPage()"
+    [disabled]="currentPage === totalPages"
+  >
+    Next
+  </button>
+
+</div>
+  </div>
+
+</div>
+<!-- Employee Details Modal -->
+
+<div
+  class="modal-overlay"
+  *ngIf="showEmployeeModal"
+  (click)="closeModal()"
+>
+
+  <div
+    class="employee-modal"
+    (click)="$event.stopPropagation()"
+  >
+
+    <!-- Modal Header -->
+
+    <div class="modal-header">
+
+      <h2>Employee Details</h2>
+
+      <button
+        class="close-btn"
+        (click)="closeModal()"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <!-- Employee Details -->
+
+    <div
+      class="employee-details"
+      *ngIf="selectedEmployee"
+    >
+
+      <!-- Photo -->
+
+      <div class="employee-photo">
+
+        <img
+          *ngIf="selectedEmployee.photo"
+          [src]="selectedEmployee.photo"
+          alt="Employee Photo"
+        >
+
+        <div
+          *ngIf="!selectedEmployee.photo"
+          class="default-avatar"
+        >
+          {{ selectedEmployee.name.charAt(0) }}
+        </div>
+
+      </div>
+
+
+      <!-- Employee Information -->
+
+      <div class="details-grid">
+
+        <div class="detail-item">
+
+          <label>Employee ID</label>
+
+          <strong>
+            {{ selectedEmployee.employeeId }}
+          </strong>
+
+        </div>
+
+
+        <div class="detail-item">
+
+          <label>Full Name</label>
+
+          <strong>
+            {{ selectedEmployee.name }}
+          </strong>
+
+        </div>
+
+
+        <div class="detail-item">
+
+          <label>Email</label>
+
+          <strong>
+            {{ selectedEmployee.email }}
+          </strong>
+
+        </div>
+
+
+        <div class="detail-item">
+
+          <label>Phone</label>
+
+          <strong>
+            {{ selectedEmployee.phone }}
+          </strong>
+
+        </div>
+
+
+        <div class="detail-item">
+
+          <label>Department</label>
+
+          <strong>
+            {{ selectedEmployee.department }}
+          </strong>
+
+        </div>
+
+
+        <div class="detail-item">
+
+          <label>Designation</label>
+
+          <strong>
+            {{ selectedEmployee.designation }}
+          </strong>
+
+        </div>
+
+
+        <div class="detail-item">
+
+          <label>Joining Date</label>
+
+          <strong>
+            {{ selectedEmployee.joiningDate }}
+          </strong>
+
+        </div>
+
+
+        <div class="detail-item">
+
+          <label>Status</label>
+
+          <span
+            class="status"
+            [class.active]="selectedEmployee.status === 'Active'"
+            [class.inactive]="selectedEmployee.status === 'Inactive'"
+          >
+            {{ selectedEmployee.status }}
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- Barcode -->
+
+      <div class="barcode-section">
+
+        <h3>Employee Barcode</h3>
+
+        <svg id="employeeBarcode"></svg>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

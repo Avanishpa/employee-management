@@ -1,0 +1,653 @@
+<div class="dashboard">
+
+  <!-- =========================
+       DASHBOARD HEADER
+  ========================== -->
+
+  <div class="dashboard-header">
+
+    <div>
+
+      <h1>Dashboard</h1>
+
+      <p>
+        Welcome to Employee Management System
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       STATISTICS CARDS
+  ========================== -->
+
+  <div class="stats-grid">
+
+
+    <!-- TOTAL EMPLOYEES -->
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        👥
+      </div>
+
+      <div>
+
+        <span>Total Employees</span>
+
+        <h2>
+          {{ totalEmployees }}
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <!-- TOTAL DEPARTMENTS -->
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        🏢
+      </div>
+
+      <div>
+
+        <span>Total Departments</span>
+
+        <h2>
+          {{ totalDepartments }}
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <!-- PRESENT -->
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        ✅
+      </div>
+
+      <div>
+
+        <span>Present Today</span>
+
+        <h2>
+          {{ presentToday }}
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <!-- ABSENT -->
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        ❌
+      </div>
+
+      <div>
+
+        <span>Absent Today</span>
+
+        <h2>
+          {{ absentToday }}
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <!-- LATE -->
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        ⏰
+      </div>
+
+      <div>
+
+        <span>Late Today</span>
+
+        <h2>
+          {{ lateToday }}
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <!-- WORK FROM HOME -->
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        🏠
+      </div>
+
+      <div>
+
+        <span>Work From Home</span>
+
+        <h2>
+          {{ workFromHomeToday }}
+        </h2>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       QUICK ACTIONS
+  ========================== -->
+
+  <div class="dashboard-section">
+
+    <div class="section-header">
+
+      <h3>Quick Actions</h3>
+
+    </div>
+
+
+    <div class="quick-actions">
+
+
+      <a
+        routerLink="/employees/add"
+        class="action-card"
+      >
+
+        <span class="action-icon">
+          ➕
+        </span>
+
+        <div>
+
+          <strong>Add Employee</strong>
+
+          <small>
+            Create a new employee
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <a
+        routerLink="/departments/add"
+        class="action-card"
+      >
+
+        <span class="action-icon">
+          🏢
+        </span>
+
+        <div>
+
+          <strong>Add Department</strong>
+
+          <small>
+            Create a department
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <a
+        routerLink="/attendance/mark"
+        class="action-card"
+      >
+
+        <span class="action-icon">
+          📅
+        </span>
+
+        <div>
+
+          <strong>Mark Attendance</strong>
+
+          <small>
+            Mark today's attendance
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <a
+        routerLink="/attendance/history"
+        class="action-card"
+      >
+
+        <span class="action-icon">
+          📜
+        </span>
+
+        <div>
+
+          <strong>Attendance History</strong>
+
+          <small>
+            View attendance records
+          </small>
+
+        </div>
+
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       ATTENDANCE OVERVIEW
+  ========================== -->
+
+  <div class="dashboard-section">
+
+    <div class="section-header">
+
+      <h3>Today's Attendance Overview</h3>
+
+    </div>
+
+
+    <div class="attendance-overview">
+
+
+      <div class="attendance-item">
+
+        <div class="attendance-number present">
+
+          {{ presentToday }}
+
+        </div>
+
+        <span>Present</span>
+
+      </div>
+
+
+      <div class="attendance-item">
+
+        <div class="attendance-number absent">
+
+          {{ absentToday }}
+
+        </div>
+
+        <span>Absent</span>
+
+      </div>
+
+
+      <div class="attendance-item">
+
+        <div class="attendance-number late">
+
+          {{ lateToday }}
+
+        </div>
+
+        <span>Late</span>
+
+      </div>
+
+
+      <div class="attendance-item">
+
+        <div class="attendance-number wfh">
+
+          {{ workFromHomeToday }}
+
+        </div>
+
+        <span>Work From Home</span>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       DASHBOARD FOOTER INFO
+  ========================== -->
+
+  <div class="dashboard-info">
+
+    <span>
+      📊 Employee Management System Dashboard
+    </span>
+
+    <span>
+      Data is saved in LocalStorage
+    </span>
+
+  </div>
+
+</div>
+
+<!-- ========================================
+     DASHBOARD CHARTS
+======================================== -->
+
+<div class="charts-grid">
+
+
+  <!-- ATTENDANCE PIE CHART -->
+
+  <div class="chart-card">
+
+    <h3>Today's Attendance</h3>
+
+    <apx-chart
+
+      [series]="attendanceChartOptions.series"
+
+      [chart]="attendanceChartOptions.chart"
+
+      [labels]="attendanceChartOptions.labels"
+
+      [responsive]="attendanceChartOptions.responsive"
+
+      [legend]="attendanceChartOptions.legend"
+
+    >
+    </apx-chart>
+
+  </div>
+
+
+  <!-- DEPARTMENT BAR CHART -->
+
+  <div class="chart-card">
+
+    <h3>Department-wise Employees</h3>
+
+    <apx-chart
+
+      [series]="departmentChartOptions.series"
+
+      [chart]="departmentChartOptions.chart"
+
+      [dataLabels]="departmentChartOptions.dataLabels"
+
+      [plotOptions]="departmentChartOptions.plotOptions"
+
+      [xaxis]="departmentChartOptions.xaxis"
+
+      [yaxis]="departmentChartOptions.yaxis"
+
+    >
+    </apx-chart>
+
+  </div>
+
+
+</div>
+<!-- ========================================
+     RECENT EMPLOYEES
+======================================== -->
+
+<div class="dashboard-section recent-employees-section">
+
+  <div class="section-header">
+
+    <div>
+
+      <h3>Recent Employees</h3>
+
+      <p>
+        Latest employees added to the organization
+      </p>
+
+    </div>
+
+
+    <a
+      routerLink="/employees"
+      class="view-all-btn"
+    >
+      View All →
+    </a>
+
+  </div>
+
+
+  <!-- TABLE -->
+
+  <div class="table-responsive">
+
+    <table class="dashboard-table">
+
+      <thead>
+
+        <tr>
+
+          <th>Employee</th>
+
+          <th>Email</th>
+
+          <th>Department</th>
+
+          <th>Position</th>
+
+          <th>Joining Date</th>
+
+          <th>Status</th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody>
+
+        <tr
+          *ngFor="
+            let employee of recentEmployees
+          "
+        >
+
+          <!-- EMPLOYEE -->
+
+          <td>
+
+            <div class="employee-info">
+
+              <!-- PHOTO -->
+
+              <img
+                *ngIf="employee.photo"
+                [src]="employee.photo"
+                [alt]="employee.name"
+                class="employee-photo"
+              />
+
+
+              <!-- DEFAULT PHOTO -->
+
+              <div
+                *ngIf="!employee.photo"
+                class="employee-avatar"
+              >
+
+                {{
+                  employee.name
+                    ? employee.name.charAt(0)
+                    : 'E'
+                }}
+
+              </div>
+
+
+              <!-- NAME -->
+
+              <span>
+
+                {{ employee.name }}
+
+              </span>
+
+            </div>
+
+          </td>
+
+
+          <!-- EMAIL -->
+
+          <td>
+
+            {{ employee.email }}
+
+          </td>
+
+
+          <!-- DEPARTMENT -->
+
+          <td>
+
+            {{ employee.department }}
+
+          </td>
+
+
+          <!-- POSITION -->
+
+          <td>
+
+            {{ employee.position }}
+
+          </td>
+
+
+          <!-- JOINING DATE -->
+
+          <td>
+
+            {{ employee.joiningDate }}
+
+          </td>
+
+
+          <!-- STATUS -->
+
+          <td>
+
+            <span
+              class="status-badge"
+              [class.active]="
+                employee.status === 'Active'
+              "
+              [class.inactive]="
+                employee.status !== 'Active'
+              "
+            >
+
+              {{ employee.status }}
+
+            </span>
+
+          </td>
+
+        </tr>
+
+
+        <!-- NO EMPLOYEES -->
+
+        <tr
+          *ngIf="
+            recentEmployees.length === 0
+          "
+        >
+
+          <td colspan="6">
+
+            <div class="empty-message">
+
+              👥 No employees found.
+
+            </div>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+<!-- ========================================
+     WEEKLY ATTENDANCE CHART
+======================================== -->
+
+<div class="dashboard-section">
+
+  <div class="section-header">
+
+    <div>
+
+      <h3>Weekly Attendance</h3>
+
+      <p>
+        Attendance overview for the last 7 days
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="weekly-chart">
+
+    <apx-chart
+
+      [series]="weeklyAttendanceChartOptions.series"
+
+      [chart]="weeklyAttendanceChartOptions.chart"
+
+      [xaxis]="weeklyAttendanceChartOptions.xaxis"
+
+      [yaxis]="weeklyAttendanceChartOptions.yaxis"
+
+      [stroke]="weeklyAttendanceChartOptions.stroke"
+
+      [legend]="weeklyAttendanceChartOptions.legend"
+
+      [dataLabels]="weeklyAttendanceChartOptions.dataLabels"
+
+    >
+    </apx-chart>
+
+  </div>
+
+</div>

@@ -1,0 +1,175 @@
+<div class="attendance-page">
+
+  <!-- Page Header -->
+
+  <div class="page-header">
+
+    <div>
+
+      <h1>Mark Attendance</h1>
+
+      <p>
+        Manage daily employee attendance
+      </p>
+
+    </div>
+
+
+    <!-- Date -->
+
+    <div class="date-section">
+
+      <label>Select Date</label>
+
+      <input
+        type="date"
+        [(ngModel)]="selectedDate"
+        (change)="onDateChange()"
+      >
+
+    </div>
+
+  </div>
+
+
+  <!-- Attendance Card -->
+
+  <div class="attendance-card">
+
+    <div class="attendance-header">
+
+      <h3>
+        Employee Attendance
+      </h3>
+
+      <span>
+        Total Employees:
+        <strong>{{ employees.length }}</strong>
+      </span>
+
+    </div>
+
+
+    <div class="table-responsive">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>#</th>
+
+            <th>Employee</th>
+
+            <th>Department</th>
+
+            <th>Attendance Status</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let employee of employees;
+              let i = index
+            "
+          >
+
+            <td>
+              {{ i + 1 }}
+            </td>
+
+
+            <!-- Employee -->
+
+            <td>
+
+              <div class="employee-info">
+
+                <div class="employee-avatar">
+
+                  {{ employee.name.charAt(0) }}
+
+                </div>
+
+                <strong>
+                  {{ employee.name }}
+                </strong>
+
+              </div>
+
+            </td>
+
+
+            <!-- Department -->
+
+            <td>
+
+              {{ employee.department }}
+
+            </td>
+
+
+            <!-- Attendance Status -->
+
+            <td>
+
+              <select
+                [(ngModel)]="
+                  attendanceStatus[employee.id]
+                "
+                class="status-select"
+              >
+
+                <option value="Present">
+                  ✅ Present
+                </option>
+
+                <option value="Absent">
+                  ❌ Absent
+                </option>
+
+                <option value="Late">
+                  ⏰ Late
+                </option>
+
+                <option value="Work From Home">
+                  🏠 Work From Home
+                </option>
+
+              </select>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- Footer -->
+
+    <div class="attendance-footer">
+
+      <button
+        class="save-btn"
+        (click)="saveAttendance()"
+      >
+
+        💾 Save Attendance
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

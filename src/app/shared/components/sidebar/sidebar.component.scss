@@ -1,0 +1,46 @@
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: #1e293b;
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.logo {
+  padding: 25px 20px;
+  border-bottom: 1px solid #334155;
+
+  h2 {
+    margin: 0;
+  }
+
+  span {
+    font-size: 12px;
+    color: #cbd5e1;
+  }
+}
+
+nav {
+  padding: 20px 10px;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 14px 15px;
+    margin-bottom: 5px;
+
+    color: #cbd5e1;
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    &:hover {
+      background: #334155;
+      color: white;
+    }
+  }
+}

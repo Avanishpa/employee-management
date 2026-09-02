@@ -1,0 +1,148 @@
+<div class="add-employee-page">
+
+  <div class="page-header">
+    <div>
+      <h1>Add Employee</h1>
+      <p>Add a new employee to your organization</p>
+    </div>
+  </div>
+
+
+  <div class="form-card">
+
+    <form [formGroup]="employeeForm" (ngSubmit)="saveEmployee()">
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label>Employee ID *</label>
+
+          <input
+            type="text"
+            formControlName="employeeId"
+            placeholder="EMP001"
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label>Full Name *</label>
+
+          <input
+            type="text"
+            formControlName="name"
+            placeholder="Enter employee name"
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label>Email *</label>
+
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="employee@email.com"
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label>Phone *</label>
+
+          <input
+            type="text"
+            formControlName="phone"
+            placeholder="Enter phone number"
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label>Department *</label>
+
+          <input
+            type="text"
+            formControlName="department"
+            placeholder="IT / HR / Finance"
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label>Designation *</label>
+
+          <input
+            type="text"
+            formControlName="designation"
+            placeholder="Angular Developer"
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label>Joining Date *</label>
+
+          <input
+            type="date"
+            formControlName="joiningDate"
+          >
+        </div>
+
+
+        <div class="form-group">
+          <label>Status *</label>
+
+          <select formControlName="status">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
+<div class="form-group photo-upload">
+
+  <label>Employee Photo</label>
+
+  <input
+    type="file"
+    accept="image/*"
+    (change)="onPhotoSelected($event)"
+  >
+
+  <div class="photo-preview" *ngIf="selectedPhoto">
+
+    <img
+      [src]="selectedPhoto"
+      alt="Employee Photo"
+    >
+
+  </div>
+
+</div>
+      </div>
+      
+
+
+      <div class="form-actions">
+
+        <button
+          type="button"
+          class="cancel-btn"
+          routerLink="/employees"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="save-btn"
+        >
+          Save Employee
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

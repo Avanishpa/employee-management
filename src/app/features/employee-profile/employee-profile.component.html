@@ -1,0 +1,306 @@
+<div
+  class="profile-container"
+  *ngIf="employee"
+>
+
+  <!-- HEADER -->
+
+  <div class="profile-header">
+
+    <button
+      class="back-btn"
+      (click)="goBack()"
+    >
+      ← Back to Employees
+    </button>
+
+
+    <button
+      class="edit-btn"
+      (click)="editEmployee()"
+    >
+      ✏️ Edit Employee
+    </button>
+
+  </div>
+
+
+  <!-- PROFILE CARD -->
+
+  <div class="profile-card">
+
+    <!-- PHOTO -->
+
+    <div class="profile-photo">
+
+      <img
+        *ngIf="employee.photo"
+        [src]="employee.photo"
+        [alt]="employee.name"
+      />
+
+
+      <div
+        *ngIf="!employee.photo"
+        class="default-avatar"
+      >
+
+        {{
+          employee.name
+            ? employee.name.charAt(0)
+            : 'E'
+        }}
+
+      </div>
+
+    </div>
+
+
+    <!-- BASIC DETAILS -->
+
+    <div class="profile-basic-info">
+
+      <h1>
+        {{ employee.name }}
+      </h1>
+
+
+      <p class="designation">
+
+        {{ employee.position }}
+
+      </p>
+
+
+      <p class="department">
+
+        🏢 {{ employee.department }}
+
+      </p>
+
+
+      <span
+        class="status-badge"
+        [class.active]="
+          employee.status === 'Active'
+        "
+        [class.inactive]="
+          employee.status !== 'Active'
+        "
+      >
+
+        {{ employee.status }}
+
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- ATTENDANCE SUMMARY -->
+
+  <h2 class="section-title">
+    Attendance Summary
+  </h2>
+
+
+  <div class="attendance-grid">
+
+
+    <div class="attendance-card total">
+
+      <span>Total Records</span>
+
+      <h2>
+        {{ totalAttendance }}
+      </h2>
+
+    </div>
+
+
+    <div class="attendance-card present">
+
+      <span>Present</span>
+
+      <h2>
+        {{ presentCount }}
+      </h2>
+
+    </div>
+
+
+    <div class="attendance-card absent">
+
+      <span>Absent</span>
+
+      <h2>
+        {{ absentCount }}
+      </h2>
+
+    </div>
+
+
+    <div class="attendance-card late">
+
+      <span>Late</span>
+
+      <h2>
+        {{ lateCount }}
+      </h2>
+
+    </div>
+
+
+    <div class="attendance-card wfh">
+
+      <span>Work From Home</span>
+
+      <h2>
+        {{ workFromHomeCount }}
+      </h2>
+
+    </div>
+
+  </div>
+
+
+  <!-- PERSONAL INFORMATION -->
+
+  <div class="info-grid">
+
+
+    <div class="info-card">
+
+      <h2>
+        👤 Personal Information
+      </h2>
+
+
+      <div class="info-row">
+
+        <span>Email</span>
+
+        <strong>
+          {{ employee.email || '-' }}
+        </strong>
+
+      </div>
+
+
+      <div class="info-row">
+
+        <span>Phone</span>
+
+        <strong>
+          {{ employee.phone || '-' }}
+        </strong>
+
+      </div>
+
+
+      <div class="info-row">
+
+        <span>Gender</span>
+
+        <strong>
+          {{ employee.gender || '-' }}
+        </strong>
+
+      </div>
+
+
+      <div class="info-row">
+
+        <span>Date of Birth</span>
+
+        <strong>
+          {{ employee.dateOfBirth || '-' }}
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <!-- JOB INFORMATION -->
+
+    <div class="info-card">
+
+      <h2>
+        💼 Job Information
+      </h2>
+
+
+      <div class="info-row">
+
+        <span>Employee ID</span>
+
+        <strong>
+          {{ employee.id }}
+        </strong>
+
+      </div>
+
+
+      <div class="info-row">
+
+        <span>Department</span>
+
+        <strong>
+          {{ employee.department }}
+        </strong>
+
+      </div>
+
+
+      <div class="info-row">
+
+        <span>Position</span>
+
+        <strong>
+          {{ employee.position }}
+        </strong>
+
+      </div>
+
+
+      <div class="info-row">
+
+        <span>Joining Date</span>
+
+        <strong>
+          {{ employee.joiningDate }}
+        </strong>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- BARCODE SECTION -->
+
+  <div class="info-card barcode-card">
+
+    <h2>
+      🪪 Employee Barcode
+    </h2>
+
+    <p>
+      Employee identification barcode
+    </p>
+
+
+    <!-- If you already generated a barcode -->
+
+    <div class="barcode-placeholder">
+
+      BARCODE: {{ employee.id }}
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,427 @@
+/* ========================================
+   PROFILE CONTAINER
+======================================== */
+
+.profile-container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+
+.back-btn,
+.edit-btn {
+  border: none;
+
+  padding: 11px 18px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+.back-btn {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+
+.edit-btn {
+  background: #2563eb;
+  color: white;
+}
+
+
+/* ========================================
+   PROFILE CARD
+======================================== */
+
+.profile-card {
+  background: white;
+
+  border-radius: 16px;
+
+  padding: 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 25px;
+
+  margin-bottom: 30px;
+
+  box-shadow:
+    0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ========================================
+   PHOTO
+======================================== */
+
+.profile-photo img,
+.default-avatar {
+  width: 120px;
+
+  height: 120px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
+
+.default-avatar {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #dbeafe;
+
+  color: #2563eb;
+
+  font-size: 45px;
+
+  font-weight: 700;
+}
+
+
+/* ========================================
+   BASIC INFO
+======================================== */
+
+.profile-basic-info h1 {
+  margin: 0;
+
+  font-size: 30px;
+
+  color: #1e293b;
+}
+
+
+.designation {
+  margin: 7px 0;
+
+  font-size: 17px;
+
+  color: #64748b;
+}
+
+
+.department {
+  color: #475569;
+}
+
+
+.status-badge {
+  display: inline-block;
+
+  padding: 6px 14px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.status-badge.active {
+  background: #dcfce7;
+
+  color: #15803d;
+}
+
+
+.status-badge.inactive {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+
+/* ========================================
+   SECTION TITLE
+======================================== */
+
+.section-title {
+  font-size: 22px;
+
+  color: #1e293b;
+
+  margin-bottom: 18px;
+}
+
+
+/* ========================================
+   ATTENDANCE GRID
+======================================== */
+
+.attendance-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, 1fr);
+
+  gap: 18px;
+
+  margin-bottom: 30px;
+}
+
+
+.attendance-card {
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+.attendance-card span {
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+
+.attendance-card h2 {
+  margin: 8px 0 0;
+
+  font-size: 28px;
+}
+
+
+.attendance-card.total {
+  border-left:
+    4px solid #2563eb;
+}
+
+
+.attendance-card.present {
+  border-left:
+    4px solid #22c55e;
+}
+
+
+.attendance-card.absent {
+  border-left:
+    4px solid #ef4444;
+}
+
+
+.attendance-card.late {
+  border-left:
+    4px solid #f59e0b;
+}
+
+
+.attendance-card.wfh {
+  border-left:
+    4px solid #6366f1;
+}
+
+
+/* ========================================
+   INFORMATION GRID
+======================================== */
+
+.info-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 25px;
+
+  margin-bottom: 25px;
+}
+
+
+.info-card {
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+.info-card h2 {
+  margin-top: 0;
+
+  font-size: 19px;
+
+  color: #1e293b;
+
+  margin-bottom: 20px;
+}
+
+
+/* ========================================
+   INFORMATION ROW
+======================================== */
+
+.info-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 13px 0;
+
+  border-bottom:
+    1px solid #f1f5f9;
+}
+
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+
+.info-row span {
+  color: #64748b;
+}
+
+
+.info-row strong {
+  color: #334155;
+
+  text-align: right;
+}
+
+
+/* ========================================
+   BARCODE
+======================================== */
+
+.barcode-card {
+  margin-bottom: 30px;
+}
+
+
+.barcode-card p {
+  color: #64748b;
+}
+
+
+.barcode-placeholder {
+  margin-top: 20px;
+
+  padding: 25px;
+
+  border: 2px dashed #cbd5e1;
+
+  border-radius: 10px;
+
+  text-align: center;
+
+  font-family: monospace;
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+  letter-spacing: 4px;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1100px) {
+
+  .attendance-grid {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+}
+
+
+@media (max-width: 768px) {
+
+  .profile-card {
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+
+  .profile-header {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 12px;
+  }
+
+
+  .back-btn,
+  .edit-btn {
+    width: 100%;
+  }
+
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .attendance-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .attendance-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .info-row {
+    flex-direction: column;
+
+    gap: 5px;
+  }
+
+
+  .info-row strong {
+    text-align: left;
+  }
+
+}

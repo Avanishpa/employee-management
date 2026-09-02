@@ -1,0 +1,111 @@
+.add-employee-page {
+  max-width: 1000px;
+}
+
+.page-header {
+  margin-bottom: 25px;
+
+  h1 {
+    margin: 0;
+  }
+
+  p {
+    color: #64748b;
+  }
+}
+
+.form-card {
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 12px;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.form-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  label {
+    font-size: 14px;
+
+    font-weight: 500;
+  }
+
+  input,
+  select {
+    padding: 12px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    &:focus {
+      border-color: #2563eb;
+    }
+  }
+}
+
+.form-actions {
+  margin-top: 30px;
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 15px;
+}
+
+.cancel-btn,
+.save-btn {
+  padding: 12px 20px;
+
+  border-radius: 8px;
+
+  border: none;
+
+  cursor: pointer;
+
+  font-size: 14px;
+}
+
+.cancel-btn {
+  background: #e2e8f0;
+}
+
+.save-btn {
+  background: #2563eb;
+
+  color: white;
+}
+.photo-preview {
+  margin-top: 10px;
+
+  img {
+    width: 100px;
+    height: 100px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 2px solid #2563eb;
+  }
+}
